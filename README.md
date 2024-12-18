@@ -35,21 +35,38 @@ Our results show that fine-tuned LLMs achieve **up to 85% accuracy** in mimickin
 
 We provide **fine-tuned LLaMA 3.1 8B model weights** trained on the CounterEval dataset to predict human evaluations of counterfactual explanations.
 
-### Files Included:
-| File                     | Description                                                 |
-|--------------------------|-------------------------------------------------------------|
-| `adapter_config.json`    | Configuration file for the adapter.                         |
-| `adapter_model.safetensors` | Fine-tuned model weights in `safetensors` format.          |
-| `tokenizer.json`         | Tokenizer for the LLaMA model.                              |
-| `tokenizer_config.json`  | Tokenizer configuration file.                               |
-| `special_tokens_map.json`| Special tokens mapping used during training.                |
-| `training_args.bin`      | Training arguments saved for reproducibility.               |
-| `README.md`              | Instructions and documentation for model usage.             |
+### File Structure
+The repository is organized as follows:
+```
+CounterEval/
+│
+├── code/                              # Processing and evaluation scripts
+│   ├── data_preparation.ipynb         # Script to preprocess the CounterEval dataset
+│   ├── error_analysis_confusion_matrices.ipynb  # Script for confusion matrix and error analysis
+│   ├── finetuning_script_llama.py     # Script to fine-tune LLaMA models
+│   └── Llama_31_8b_inference.ipynb    # Inference script for the fine-tuned LLaMA 3.1 8B model
+│
+├── models/                            # Model weights and configurations
+│   ├── trained_3.1.8b/                # Fine-tuned LLaMA 3.1 8B model directory
+│   │   ├── adapter_config.json        # Model configuration file
+│   │   ├── adapter_model.safetensors  # Model weights (tracked via Git LFS)
+│   │   ├── tokenizer.json             # Tokenizer file
+│   │   ├── tokenizer_config.json      # Tokenizer configuration
+│   │   ├── special_tokens_map.json    # Special tokens mapping
+│   │   ├── training_args.bin          # Training arguments and settings
+│   │   └── README.md                  # Details about the fine-tuned model
+│
+├── appendix_Towards_unifying_evaluation_for_counterfactual_explanations.pdf  
+│   # Technical appendix containing detailed experiments and methodologies
+│
+└── README.md                          # Overview and documentation
+```
 
 ---
 
 ### ⬇️ Downloading the Model Weights
-The model weights can be downloaded directly from this repository under the **`models`** directory or via Hugging Face:
+The fine-tuned LLaMA-3.1 8B weights are stored under models/trained_3.1.8b/ and tracked using Git LFS.
 
 ```bash
+git lfs install
 git clone https://github.com/your_username/countereval.git
